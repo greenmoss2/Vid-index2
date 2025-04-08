@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YouTube Video Index (Mock)</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f0f0f0; }
+    input { padding: 0.5rem; width: 100%; max-width: 500px; margin-bottom: 1rem; font-size: 1rem; }
+    .video-entry { background: white; padding: 1rem; margin-bottom: 1rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .video-title { font-weight: bold; font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .video-tags { font-size: 0.9rem; color: #666; margin-bottom: 0.5rem; }
+    .video-notes { font-size: 0.95rem; color: #333; }
+    .video-timestamps { font-size: 0.85rem; color: #444; margin-top: 0.5rem; white-space: pre-line; }
+  </style>
+</head>
+<body>
+  <h1>YouTube Video Index (Mock)</h1>
+  <input type="text" id="search" placeholder="Search videos by title, tags, or notes..." />
+  <div id="results"></div>
+
+  <script>
+    let videos = [];
+
+    fetch('mock_videos.json')
+      .then(res => res.json())
+      .then(data => {
+        videos = data;
+        renderVideos(videos);
+      });
+
+    const searchInput = document.getElementById('search');
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase();
+      const filtered = videos.filter(video =>
+        video.title.toLowerCase().includes(query) ||
+        video.tags.join(' ').toLowerCase().includes(query) ||
+        video.notes.toLowerCase().includes(query)
+      );
+      renderVideos(filtered);
+    });
+
+    function renderVideos(videoList) {
+      const results = document.getElementById('results');
+      results.innerHTML = '';
+      videoList.forEach(video => {
+        const div = document.createElement('div');
+        div.className = 'video-entry';
+        div.innerHTML = `
+          <div class="video-title">${video.title}</div>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/${video.youtubeId}" frameborder="0" allowfullscreen></iframe>
+          <div class="video-tags">Tags: ${video.tags.join(', ')}</div>
+          <div class="video-notes">${video.notes}</div>
+          <div class="video-timestamps">${video.timestamps}</div>
+        `;
+        results.appendChild(div);
+      });
+    }
+  </script>
+</body>
+</html>

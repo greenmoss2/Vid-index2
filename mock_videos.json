@@ -1,0 +1,35 @@
+[
+  {
+    "title": "Mock Project 01 - Acrylic Cutting Demo",
+    "youtubeId": "dQw4w9WgXcQ",
+    "tags": [
+      "acrylic",
+      "cutting",
+      "demo"
+    ],
+    "notes": "A demonstration of cutting techniques using a scroll saw.",
+    "timestamps": "00:00 Safety Check\n01:15 Tool Setup\n03:30 Cutting in Action"
+  },
+  {
+    "title": "Mock Project 02 - Drill Press Basics",
+    "youtubeId": "kxopViU98Xo",
+    "tags": [
+      "drilling",
+      "tools",
+      "setup"
+    ],
+    "notes": "How to safely operate a pillar drill for clean holes.",
+    "timestamps": "00:00 Overview\n01:40 Bit Types\n04:00 Demo"
+  },
+  {
+    "title": "Mock Project 03 - Finishing Acrylic Edges",
+    "youtubeId": "5NV6Rdv1a3I",
+    "tags": [
+      "sanding",
+      "finishing",
+      "acrylic"
+    ],
+    "notes": "Using wet and dry sandpaper to finish plastic surfaces.",
+    "timestamps": "00:00 Intro\n02:00 Sanding\n03:30 Final Polish"
+  }
+]
